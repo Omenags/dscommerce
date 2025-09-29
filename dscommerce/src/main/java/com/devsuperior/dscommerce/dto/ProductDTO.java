@@ -1,8 +1,13 @@
 package com.devsuperior.dscommerce.dto;
 
+import com.devsuperior.dscommerce.entities.Category;
+import com.devsuperior.dscommerce.entities.OrderItem;
 import com.devsuperior.dscommerce.entities.Product;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class ProductDTO {
     private Long id;
@@ -10,6 +15,7 @@ public class ProductDTO {
     private String description;
     private Double price;
     private String imgUrl;
+
 
     public ProductDTO(){
     }
@@ -51,4 +57,5 @@ public class ProductDTO {
     public String getImgUrl() {
         return imgUrl;
     }
+
 }

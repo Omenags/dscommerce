@@ -28,6 +28,18 @@ public class ProductService {
     public ProductDTO findById(Long id){
         Product product = repository.findById(id).get();
         return new ProductDTO(product);
+    }
 
+    @Transactional
+    public ProductDTO insert(ProductDTO dto){
+        Product entity= new Product();
+        entity.setName(dto.getName());
+        entity.setDescription(dto.getDescription());
+        entity.setImgUrl(dto.getImgUrl());
+        entity.setPrice(dto.getPrice());
+
+        entity = repository.save(entity);
+
+        return new ProductDTO(entity);
     }
 }

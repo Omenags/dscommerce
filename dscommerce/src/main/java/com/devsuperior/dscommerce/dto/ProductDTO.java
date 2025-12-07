@@ -4,15 +4,21 @@ import com.devsuperior.dscommerce.entities.Category;
 import com.devsuperior.dscommerce.entities.OrderItem;
 import com.devsuperior.dscommerce.entities.Product;
 import jakarta.persistence.*;
-import org.springframework.transaction.annotation.Transactional;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
-import java.util.HashSet;
-import java.util.Set;
 
 public class ProductDTO {
     private Long id;
+    @Size(min = 3, max = 80, message = "Nome precisa ter de 3 a 80 caracteres")
+    @NotBlank(message = "Campo requerido.")
     private String name;
+    @Size(min = 10, message = "Descrição deve ter no mínimo 10 caracteres")
+    @NotBlank(message = "campo requirido.")
     private String description;
+
+    @Positive(message = "O preço deve ser positivo")
     private Double price;
     private String imgUrl;
 
